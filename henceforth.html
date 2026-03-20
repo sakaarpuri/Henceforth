@@ -93,6 +93,17 @@ Return ONLY raw JSON, no markdown:
     font-style: italic;
   }
 
+  /* === Mobile responsive fixes === */
+  @media (max-width: 768px) {
+    #root > div {
+      overflow-x: hidden !important;
+    }
+    /* Nav: shrink text and stack on mobile */
+    #root div[style*="max-width: 1140px"][style*="padding: 14px"] {
+      padding: 10px 14px !important;
+    }
+  }
+
   /* === Second decorative banner (market scene) === */
   #hf-market-banner {
     width: 100%;
@@ -369,6 +380,34 @@ Return ONLY raw JSON, no markdown:
     }
   }  // end inject()
 
+  // ── Mobile: make two-panel layout stack vertically ──
+  function applyMobileLayout() {
+    var isMobile = window.innerWidth <= 768;
+    // Find the two-panel flex container (job list + detail panel)
+    var panels = document.querySelector('[style*="display: flex; gap: 20px; align-items: flex-start"]');
+    if (panels) {
+      panels.style.flexDirection = isMobile ? 'column' : 'row';
+      // Make each panel full-width on mobile
+      if (isMobile) {
+        Array.from(panels.children).forEach(function(child) {
+          child.style.width = '100%';
+          child.style.minWidth = '0';
+          child.style.maxWidth = '100%';
+          child.style.position = 'relative';
+          child.style.top = '0';
+        });
+      }
+    }
+    // Fix nav subtitle overflow
+    var navSub = document.querySelector('[style*="EST. MDXII"], [style*="EMPLOYMENT OF GOOD"]');
+    if (navSub && isMobile) {
+      navSub.style.fontSize = '9px';
+      navSub.style.letterSpacing = '2px';
+    }
+  }
+
+  window.addEventListener('resize', applyMobileLayout);
+
   // ── Font size booster: scale up all inline fontSize values by 1.25x ──
   function boostFonts(root) {
     if (!root) return;
@@ -408,6 +447,7 @@ Return ONLY raw JSON, no markdown:
   } else {
     setTimeout(inject, 300);
     setTimeout(boostOnce, 600);
+    setTimeout(applyMobileLayout, 700);
   }
 })();
 </script>
