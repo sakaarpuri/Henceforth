@@ -380,6 +380,33 @@ Return ONLY raw JSON, no markdown:
     }
   }  // end inject()
 
+  // ── Per-image focal point map ──
+  // Portraits: "top" (face in upper third); scenes/landscapes: "center"
+  var IMG_POSITIONS = {
+    'Henry_VIII':          '50% 12%',  // royal portrait — face at top
+    'Doctor_Schnabel':     '50% 5%',   // plague doctor beak mask — very top
+    'court_jester':        '50% 10%',  // portrait — face at top
+    'Pat_Lyon':            '50% 15%',  // blacksmith portrait — face/chest
+    'Alchemist':           '50% 20%',  // figure in lab — upper portion
+    'Tallow-chandler':     '50% 10%',  // chandler figure — face at top
+    'Billy_Clark':         '50% 20%',  // town crier — head/shoulders
+    'Eadwine':             '50% 30%',  // scribe at desk — centered scene
+    'Witchcraft':          '50% 20%',  // pamphlet image
+    'Carracks':            '50% 40%',  // ship scene — center
+  };
+
+  function applyImagePositions(root) {
+    if (!root) return;
+    root.querySelectorAll('img').forEach(function(img) {
+      var src = img.src || '';
+      Object.keys(IMG_POSITIONS).forEach(function(key) {
+        if (src.indexOf(key) !== -1) {
+          img.style.objectPosition = IMG_POSITIONS[key];
+        }
+      });
+    });
+  }
+
   // ── Mobile: make two-panel layout stack vertically ──
   function applyMobileLayout() {
     var isMobile = window.innerWidth <= 768;
@@ -428,11 +455,12 @@ Return ONLY raw JSON, no markdown:
     var root = document.getElementById('root');
     if (!root) return;
     boostFonts(root);
-    // Watch for modal opening and boost its fonts too
+    applyImagePositions(root);
+    // Watch for modal opening and boost its fonts + image positions
     new MutationObserver(function(mutations) {
       mutations.forEach(function(m) {
         m.addedNodes.forEach(function(n) {
-          if (n.nodeType === 1) boostFonts(n);
+          if (n.nodeType === 1) { boostFonts(n); applyImagePositions(n); }
         });
       });
     }).observe(root, { childList: true, subtree: true });
