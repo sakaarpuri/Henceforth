@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Henceforth — 1500s Careers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f0e6c8;
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(160,110,40,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(100,60,10,0.10) 0%, transparent 60%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IM Fell English', Georgia, serif;
+      color: #1e0f00;
+      padding: 40px 20px;
+    }
+    .masthead {
+      text-align: center;
+      border-top: 4px double #5a3e1b;
+      border-bottom: 4px double #5a3e1b;
+      padding: 28px 40px;
+      margin-bottom: 48px;
+      max-width: 640px;
+      width: 100%;
+    }
+    .masthead-eyebrow {
+      font-size: 11px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #7a5c2e;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(42px, 10vw, 72px);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .tagline {
+      font-style: italic;
+      font-size: 15px;
+      color: #5a3e1b;
+    }
+    .cards {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 720px;
+    }
+    .card {
+      background: #f7eed8;
+      border: 1px solid #b89a5a;
+      border-top: 3px solid #8b1a1a;
+      padding: 28px 28px 24px;
+      width: 300px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 2px 3px 10px rgba(0,0,0,0.10);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 3px 6px 18px rgba(0,0,0,0.16);
+    }
+    .card-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8b1a1a;
+      margin-bottom: 8px;
+    }
+    .card h2 {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 26px;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .card p {
+      font-size: 13px;
+      font-style: italic;
+      color: #5a3e1b;
+      line-height: 1.6;
+    }
+    .card-arrow {
+      display: block;
+      margin-top: 16px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8b1a1a;
+    }
+    footer {
+      margin-top: 52px;
+      font-size: 11px;
+      font-style: italic;
+      color: #9a7a4a;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="masthead">
+    <div class="masthead-eyebrow">Est. Anno Domini 1582</div>
+    <h1>Henceforth</h1>
+    <p class="tagline">Career Opportunities for the Discerning Tudor Subject</p>
+  </div>
+
+  <div class="cards">
+    <a class="card" href="henceforth.html">
+      <div class="card-label">The Board</div>
+      <h2>Job Listings</h2>
+      <p>Browse all vacancies of the realm — from Guild Smiths to Royal Advisors — illustrated with portraits of the age.</p>
+      <span class="card-arrow">Enter →</span>
+    </a>
+    <a class="card" href="henceforth-gazette.html">
+      <div class="card-label">The Gazette</div>
+      <h2>Classified Advertisements</h2>
+      <p>The newspaper of record for Tudor employment. Match thy modern skills to callings of yore. Visions of future occupations within.</p>
+      <span class="card-arrow">Enter →</span>
+    </a>
+  </div>
+
+  <footer>Henceforth assumeth no liability for plague, witchcraft, or unsatisfactory guild placements.</footer>
+</body>
+</html>
